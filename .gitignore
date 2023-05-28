@@ -1,0 +1,5 @@
+/.phpunit.cache/
+/.vagrant/
+/coverage/
+/vendor/
+

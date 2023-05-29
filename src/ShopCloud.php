@@ -65,7 +65,7 @@ class ShopCloud
         return $this->errors;
     }
 
-    private function validIdentified($payload)
+    public function validIdentified($payload)
     {
         $this->errors = [];
 

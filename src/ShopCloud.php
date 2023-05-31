@@ -11,14 +11,12 @@ class ShopCloud
     private $cloudShopId;
     private $errors;
     private $jweHelper;
-    private $secret;
 
     public function __construct(string $cloudShopId, string $secret)
     {
         $this->cloudShopId = $cloudShopId;
-        $this->secret = $secret;
         $this->errors = [];
-        $this->jweHelper = new JweHelper($secret);
+        $this->jweHelper = new JweHelper(str_replace('sk_', '', $secret));
     }
 
     public function readToken($token)

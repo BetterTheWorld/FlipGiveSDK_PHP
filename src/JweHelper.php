@@ -23,7 +23,7 @@ class JweHelper
     {
         $keyEncryptionAlgorithmManager = new AlgorithmManager([ new Dir() ]);
         $contentEncryptionAlgorithmManager = new AlgorithmManager([ new A128GCM() ]);
-        $compressionMethodManager = new CompressionMethodManager([ new Deflate() ]);
+        $compressionMethodManager = new CompressionMethodManager([ new Deflate(0) ]);
 
         $this->jweBuilder = new JWEBuilder(
             $keyEncryptionAlgorithmManager,
@@ -40,7 +40,7 @@ class JweHelper
         $this->key = new JWK(
             [
                 'kty' => 'oct',
-                'k' => $secret,
+                'k' => base64_encode($secret),
             ]
         );
 

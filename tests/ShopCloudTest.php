@@ -11,8 +11,8 @@ use PHPUnit\Framework\TestCase;
 
 final class ShopCloudTest extends TestCase
 {
-    private const CLOUD_SHOP_ID = 'BB126923';
-    private const SECRET = '61c394cf3346077b';
+    private const CLOUD_SHOP_ID = 'A2DE537C';
+    private const SECRET = 'sk_61c394cf3346077b';
 
     private $campaignData;
     private $groupData;
@@ -32,7 +32,7 @@ final class ShopCloudTest extends TestCase
             'campaign_data' => $this->campaignData,
         ];
 
-        $this->sut = new ShopCloud(self::CLOUD_SHOP_ID, 'sk_5ef962a96245420d');
+        $this->sut = new ShopCloud(self::CLOUD_SHOP_ID, self::SECRET);
     }
 
     public function testTokenIsGeneratedAndCloudShopIdIsAppended(): void

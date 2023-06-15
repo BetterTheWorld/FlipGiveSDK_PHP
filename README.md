@@ -63,11 +63,20 @@ $shopCloud->identifiedToken($payload);
 
 The variable in this example uses other variables, ($user_data, $campaign_data, etc.). let's look at each one of them:
 
-- `user_data`: **required** when `campaign_data` is not present in the payload, otherwise optional. It represents the user using the Shop, and must contain:
+
+- `user_data`: **required** when `campaign_data` is not present in the payload, otherwise optional. It represents the user using the Shop, and  contains the following information:
   - `id`: **required**. A string representing the user's ID in your system.
   - `email`: **required**. A string with the user's email.
   - `name`: **required**. A string with the user's name.
   - `country`: **required**. A string with the ISO code of the user's country, which must be 'CAN' or 'USA' at this time.
+  - `city`: *optional*. A string with the user's city.
+  - `state`: *optional*. A string with the user's state. It must be a 2 letter code. You can see a list of values [here](https://github.com/BetterTheWorld/FlipGiveSDK_Ruby/blob/main/states.yml).
+  - `postal_code`: A string with the user's postal code. It must match Regex `/\d{5}/` for the USA or `/[a-zA-Z]\d[a-zA-Z]\d[a-zA-Z]\d/` for Canada.
+  - `latitude`: *optional*. A float with the user's latitude in decimal degree format. Without accompanying `:longitude`, latitude will be ignored.
+  - `longitude`: *optional*. A float with the user's longitude in decimal degree format. Without accompanying `:latitude`, longitude will be ignored.
+  - `image_url`: *optional*. A string containing the URL for the user's avatar.
+
+Optional fields of invalid formats will not be validated but will be ignored.
 
   ```php
   $user_data = [
@@ -78,13 +87,21 @@ The variable in this example uses other variables, ($user_data, $campaign_data, 
   ];
   ```
 
-- `campaign_data`: Required when user_data is not present in the payload, otherwise optional. It represents the fundraising campaign and it must contain:
+- `campaign_data`: Required when user_data is not present in the payload, otherwise optional. It represents the fundraising campaign and contains the following information:
 
-  - **`id`: required** A string representing the user's ID in your system.
-  - **`name`: required** A string  with the campaign's email.
-  - **`category`: required** A string  with the campaign's category. We will try to match it with one of our existing categories, or assign a default. You can see a list of our categories [here](https://github.com/BetterTheWorld/FlipGiveSDK_PHP/blob/main/categories.txt).
-  - **`country`: required** A string  with the ISO code of the campaign's country, which must be 'CAD' or 'USA' at this time.
-  - **`admin_data`: required** The user information for the campaign's admin. It must contain the same information as `$user_data`
+  - `id`: **required** A string representing the user's ID in your system.
+  - `name`: **required** A string  with the campaign's email.
+  - `category`: **required** A string  with the campaign's category. We will try to match it with one of our existing categories, or assign a default. You can see a list of our categories [here](https://github.com/BetterTheWorld/FlipGiveSDK_Ruby/blob/main/categories.txt).
+  - `country`: **required** A string  with the ISO code of the campaign's country, which must be 'CAD' or 'USA' at this time.
+  - `admin_data`: **required** The user information for the campaign's admin. It must contain the same information as `user_data`
+  - `city`: *optional*. A string with the campaign's city.
+  - `state`: *optional*. A string with the campaign's state. It must be a 2 letter code. You can see a list [here](https://github.com/BetterTheWorld/FlipGiveSDK_Ruby/blob/main/states.yml).
+  - `postal_code`: A string with the campaign's postal code. It must match Regex `/\d{5}/` for the USA or `/[a-zA-Z]\d[a-zA-Z]\d[a-zA-Z]\d/` for Canada.
+  - `latitude`: *optional*. A float with the campaign's latitude in decimal degree format.
+  - `longitude`: *optional*. A float with the campaign's longitude in decimal degree format.
+  - `image_url`: *optional*. A string containing the URL for the campaign's image, if any.
+
+Optional fields of invalid formats will not be validated but will be ignored.
 
   ```php
   $campaign_data = [

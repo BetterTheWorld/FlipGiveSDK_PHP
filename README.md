@@ -63,6 +63,7 @@ $rewards->identifiedToken($payload);
 
 The variable in this example uses other variables, ($user_data, $campaign_data, etc.). let's look at each one of them:
 
+
 - `user_data`: **required** when `campaign_data` is not present in the payload, otherwise optional. It represents the user using the Shop, and  contains the following information:
   - `id`: **required**. A string representing the user's ID in your system.
   - `email`: **required**. A string with the user's email.
@@ -74,6 +75,8 @@ The variable in this example uses other variables, ($user_data, $campaign_data, 
   - `latitude`: *optional*. A float with the user's latitude in decimal degree format. Without accompanying `:longitude`, latitude will be ignored.
   - `longitude`: *optional*. A float with the user's longitude in decimal degree format. Without accompanying `:latitude`, longitude will be ignored.
   - `image_url`: *optional*. A string containing the URL for the user's avatar.
+
+Optional fields of invalid formats will not be validated but will be ignored.
 
   ```php
   $user_data = [
@@ -98,6 +101,8 @@ Optional fields of invalid formats will not be validated but will be ignored.
   - `latitude`: *optional*. A float with the campaign's latitude in decimal degree format.
   - `longitude`: *optional*. A float with the campaign's longitude in decimal degree format.
   - `image_url`: *optional*. A string containing the URL for the campaign's image, if any.
+
+Optional fields of invalid formats will not be validated but will be ignored.
 
   ```php
   $campaign_data = [

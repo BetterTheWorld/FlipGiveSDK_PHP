@@ -1,9 +1,9 @@
 <?php
-namespace FlipGive\ShopCloud;
+namespace FlipGive\Rewards;
 
 use Carbon\Carbon;
 
-class ShopCloud
+class Rewards
 {
     const COUNTRIES = ['CAN', 'USA'];
     const PARTNER_TOKEN_TTL = 3600; // seconds

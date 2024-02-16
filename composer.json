@@ -1,9 +1,9 @@
 {
-    "name": "flipgive/shopcloud",
+    "name": "flipgive/rewards",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "FlipGive\\ShopCloud\\": "src/"
+            "FlipGive\\Rewards\\": "src/"
         }
     },
     "require-dev": {

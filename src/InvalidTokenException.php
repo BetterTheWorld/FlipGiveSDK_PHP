@@ -1,5 +1,5 @@
 <?php
-namespace FlipGive\ShopCloud;
+namespace FlipGive\Rewards;
 
 class InvalidTokenException extends \RuntimeException
 {

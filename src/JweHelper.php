@@ -1,5 +1,5 @@
 <?php
-namespace FlipGive\ShopCloud;
+namespace FlipGive\Rewards;
 
 use Jose\Component\Core\AlgorithmManager;
 use Jose\Component\Core\JWK;

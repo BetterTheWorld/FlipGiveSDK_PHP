@@ -1,15 +1,15 @@
 <?php
-namespace FlipGive\ShopCloud\Tests;
+namespace FlipGive\Rewards\Tests;
 
-use FlipGive\ShopCloud\ShopCloud;
-use FlipGive\ShopCloud\InvalidPayloadException;
-use FlipGive\ShopCloud\InvalidTokenException;
+use FlipGive\Rewards\Rewards;
+use FlipGive\Rewards\InvalidPayloadException;
+use FlipGive\Rewards\InvalidTokenException;
 
 use Carbon\Carbon;
 
 use PHPUnit\Framework\TestCase;
 
-final class ShopCloudTest extends TestCase
+final class RewardsTest extends TestCase
 {
     private const CLOUD_SHOP_ID = 'A2DE537C';
     private const SECRET = 'sk_61c394cf3346077b';
@@ -32,7 +32,7 @@ final class ShopCloudTest extends TestCase
             'campaign_data' => $this->campaignData,
         ];
 
-        $this->sut = new ShopCloud(self::CLOUD_SHOP_ID, self::SECRET);
+        $this->sut = new Rewards(self::CLOUD_SHOP_ID, self::SECRET);
     }
 
     public function testTokenIsGeneratedAndCloudShopIdIsAppended(): void
@@ -139,7 +139,7 @@ final class ShopCloudTest extends TestCase
         $data = $this->sut->readToken($token);
 
         $expectedExpires = Carbon::now();
-        $expectedExpires->addSeconds(ShopCloud::PARTNER_TOKEN_TTL);
+        $expectedExpires->addSeconds(Rewards::PARTNER_TOKEN_TTL);
 
         $this->assertEquals($data['type'], 'partner');
         $this->assertEquals($data['expires'], $expectedExpires->timestamp);

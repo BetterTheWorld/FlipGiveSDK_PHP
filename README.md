@@ -31,7 +31,7 @@ The SDK is now ready to use.
 
 ### Usage
 
-The main purpose of `\FlipGive\Rewards\Rewards` is to generate Tokens to gain access to FlipGive's Shop Cloud API. There are 6 methods on the package's public API.
+The main purpose of `\FlipGive\Rewards\Rewards` is to generate Tokens to gain access to FlipGive's Rewards API. There are 6 methods on the package's public API.
 
 #### __construct
 This method is used to initialize the SDK, as described on the setup section of this document. It takes 2 arguments, the `rewards_id` and the `rewards_secret`.
@@ -167,7 +167,7 @@ $rewards->validIdentified($payload);
 ```
 
 #### getPartnerToken
-This method is used to generate a token that can **only** be used by the Shop Cloud partner (that's you) to access reports and other API endpoints. It is only valid for an hour.
+This method is used to generate a token that can **only** be used by the Rewards partner (that's you) to access reports and other API endpoints. It is only valid for an hour.
 
 ```php
 $rewards->getPartnerToken();
